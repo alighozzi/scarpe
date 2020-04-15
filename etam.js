@@ -20,15 +20,15 @@ searchItems = (searchTerm) =>{
                 const taille =$(el).text()
                 tailles.push(taille)
             })
-            //const link = $('div.product-tile-inner a').attr('href')
-            const image=$('a div span img').attr('src')
+            const link = "https://www.etam.ma" + $element.find('div.product-image span.thumb-link').attr('href')
+            const image_src = $element.find('div.product-image span img').attr('data-src')
            // writeStream.write(`${titre},${prix} \n`)
             const produit = {
-                image,
+                image_src,
                 titre ,
                 tailles,
                 prix,
-                //link
+                link
              }
              produits.push(produit)
         })
@@ -37,3 +37,7 @@ searchItems = (searchTerm) =>{
     
 }
 module.exports = {searchItems}
+
+/* TODO: manage pagination for 48+ results.
+    #- each results page contains 48 results(max of elements displayed in a single page)
+*/
