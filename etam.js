@@ -21,7 +21,7 @@ searchItems = (searchTerm) =>{
                 tailles.push(taille)
             })
             //const link = $('div.product-tile-inner a').attr('href')
-            const image=$('a div span img').attr('src')
+            const image=$('a div.product-image span img').attr('src')
            // writeStream.write(`${titre},${prix} \n`)
             const produit = {
                 image,

@@ -1,9 +1,17 @@
 const express = require ('express')
 const scarpingEtam= require('./etam')
+const scarpingWaikiki = require('./waikiki')
 const app= express()
 
-app.get('/search/:nom' , (req, res) =>{
+app.get('/etam/search/:nom' , (req, res) =>{
     scarpingEtam.searchItems(req.params.nom)
+    .then(produits =>{
+        res.json(produits)
+    })
+})
+
+app.get('/waikiki/search/:nom' , (req, res) =>{
+    scarpingWaikiki.searchItems(req.params.nom)
     .then(produits =>{
         res.json(produits)
     })
