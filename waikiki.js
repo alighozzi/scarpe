@@ -15,21 +15,21 @@ searchItems = (searchTerm) =>{
             const $element= $(element)
             const titre= $element.find('p.product-name a ').text().replace(/\s\s+/g,'')
             const prix = $element.find('div.product-price').text().replace(/\s\s+/g,'')
-            // const tailles= []
-            // $element.find('.sizes ul li ').each((i, el)=>{
-            //     const taille =$(el).text()
-            //     tailles.push(taille)
-            // })
+            const tailles= []
+            $element.find('.sizes ul li ').each((i, el)=>{
+                const taille =$(el).text()
+                tailles.push(taille)
+            })
             //const link = $('div.product-tile-inner a').attr('href')
             const image=$('a.product-item-image-link img').attr('src')
-            const link=$('a.product-item-image-link').attr('href')
-            const finallink= 'https://www.lcwaikiki.ma'+link
+            const link1=$('a.product-item-image-link').attr('href')
+            const link= 'https://www.lcwaikiki.ma'+link1
            // writeStream.write(`${titre},${prix} \n`)
             const produit = {
                 image,
                 titre,
                 prix,
-                finallink
+                link
              }
              produits.push(produit)
         })

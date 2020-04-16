@@ -11,24 +11,24 @@ searchItems = (searchTerm) =>{
     .then(body =>{
         const produits= []
         const $= cheerio.load(body)
-        $('.product-tile-inner').each((i, element) =>{
+        $('.search-result__item').each((i, element) =>{
             const $element= $(element)
-            const titre= $element.find('div.product-name').text().replace(/\s\s+/g,'')
-            const prix = $element.find('div.product-pricing').text().replace(/\s\s+/g,'')
-            const tailles= []
-            $element.find('.sizes ul li ').each((i, el)=>{
-                const taille =$(el).text()
-                tailles.push(taille)
-            })
-            //const link = $('div.product-tile-inner a').attr('href')
-            const image=$('a div.product-image span img').attr('src')
+            const titre= $element.find('h3.product-name-title').text().replace(/\s\s+/g,'')
+            const prix = $element.find('div span.price').text().replace(/\s\s+/g,'')
+            // const tailles= []
+            // $element.find('.sizes ul li ').each((i, el)=>{
+            //     const taille =$(el).text()
+            //     tailles.push(taille)
+            // })
+            const link = "https://www.etam.ma" + $element.find('div.search-result__image a').attr('href')
+            const image_src = $element.find('div.face-a img').attr('data-src')
            // writeStream.write(`${titre},${prix} \n`)
             const produit = {
                 image_src,
                 titre ,
-                tailles,
-                prix,
-                
+                // tailles,
+                 prix,
+                link
              }
              produits.push(produit)
         })
